@@ -1,0 +1,25 @@
+@import '../../styles/constants';
+
+mat-toolbar {
+  padding: 0;
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,0.30);
+}
+
+.sidenav-toggle {
+  padding: 0;
+  margin: 0;
+  min-width: 64px;  
+  @media (max-width: $small-breakpoint-width) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  mat-icon {
+    font-size: 30px;
+    height: 64px;
+    width: 64px;
+    line-height: 64px;
+    color: white;
+  }
+}

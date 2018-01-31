@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500');
+// import global variables
+@import './constants';
+
+/****************************************************
+Angular Material Theming
+****************************************************/
+
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+// Include the base styles for Angular Material core. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+@include mat-core();
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue.
+$primary: mat-palette($mat-blue, 700, 600, 800);
+$accent:  mat-palette($mat-red, 700, 600, 800);
+
+// The warn palette is optional (defaults to red).
+$warn:    mat-palette($mat-red);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$theme: mat-light-theme($primary, $accent, $warn);
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include angular-material-theme($theme);
+
+/****************************************************
+General CSS settings
+****************************************************/
+
+html {
+    height: 100%
+}
+
+body {
+    height: 100%;
+    font-family: $main-font;
+    margin: 0;
+    color: $darkgray;
+    font-size: 14px;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.flex-spacer {
+    flex-grow: 1;
+}
+
+
+/****************************************************
+Theming for the additional component settings
+****************************************************/
+
+@mixin additional-component-theme($theme) {
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    $warn: map-get($theme, warn);
+    $background: map-get($theme, background);
+    $foreground: map-get($theme, foreground);
+    .main-sidenav {
+        // Sidenav navigation items
+        li {
+            border-color: rgba(mat-color($foreground, secondary-text), .06);
+            color: mat-color($foreground, secondary-text);
+            >a {
+                color: mat-color($foreground, secondary-text);
+                &.is-selected,
+                &:hover,
+                &:focus {
+                    background: mat-color($background, background);
+                    color: mat-color($primary);
+                }
+            }
+        }
+    }
+}
+
+@include additional-component-theme($theme);
