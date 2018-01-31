@@ -1,0 +1,74 @@
+# Dev Docs
+
+<!-- TOC -->
+
+* [Dev Docs](#dev-docs)
+  * [Objective](#objective)
+    * [Backend](#backend)
+    * [Frontend](#frontend)
+    * [Techinical Requirement](#techinical-requirement)
+    * [Review Point - need to be studied](#review-point---need-to-be-studied)
+    * [Delivery](#delivery)
+
+<!-- /TOC -->
+
+## Issue List
+
+* [ ] As a User, I want to send email on a web page.
+  * [ ] multiple receipients, CCs, BCCs, Text Email contents
+  * [ ] result message
+  * [ ] input validation
+  * [ ] failover - email service
+
+## Dev log
+
+* [ ] create angular project ng-cli
+* [ ] make a page using material
+* [ ] make a interface for email form
+* [ ] make service that interacts with backend
+
+* [ ] create express backend project server
+* [ ] create send email api
+* [ ] create send result-list if possible
+
+## Objective
+
+Summary : The Software Engineer challenge v2.2 - email
+
+* Service that accepts information and send emails.
+* failover : Use two email service providers through abstracted layer/function for failover. If one email service goes down, quickly failover to the other service without affecting customers.
+* Email Providers : these are free services, register new accounts for each.
+  * Mailgun
+  * SendGrid
+  * if any of above have problems, alternative like amazon ses can be used.
+* It should be able to send to mutilple receipients, CCs, BCCs. Email Body can just be plain text.
+
+### Backend
+
+* Provide Restful APIs
+* No Authentication is needed
+* Don't use HTTP client library. A simple HTTP client of choice can be used to handcraft HTTP requests.
+
+### Frontend
+
+* SendGrid / Mailgun API credentials should not be leaked to the frontend.
+* No need to minify/uglify.
+* Most modern browers should be supported. (-> test it)
+* User friendly messages for errors and success
+* Make UI look good. UI component can be used.
+
+### Techinical Requirement
+
+Fullstack Path : non cruicial features can be left unimplemented and listed in the TODO secion of the readme file. Be ready to discuss production readiness of this solution in your job interview ( what's missing and why etc)
+
+### Review Point - need to be checked one by one
+
+* Input Validation
+* Error Handling
+* Technical choices
+* Clarity
+
+### Delivery
+
+* upload it on github - include README.md on how to build / deploy
+* deploy the working solution
