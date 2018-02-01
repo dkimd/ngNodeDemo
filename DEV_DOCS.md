@@ -32,12 +32,16 @@
 
 * [X] create angular project ng-cli
 * [X] make a page using material
-* [ ] make a interface for email form
-* [ ] make service that interacts with backend
+* [X] make a interface for email form
+* [X] make service that interacts with backend
+* [ ] things I'm not done
+  * [ ] clear button not doing anything yet
 
-* [ ] create express backend project server
-* [ ] create send email api
+* [X] create express backend project server
+* [X] create send email api
 * [ ] create send result-list if possible
+* [ ] things I'm not done
+  * [ ] none yet
 
 ## TODO
 
