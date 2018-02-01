@@ -36,9 +36,15 @@
 * [X] make service that interacts with backend
 * [ ] things I'm not done
   * [ ] clear button not doing anything yet
+  * [ ] pop-up message for email que / result
+  * [ ] disable send button after clicking
+  * [ ] prevent page leave in the middle of writing email
 
 * [X] create express backend project server
-* [X] create send email api
+* [ ] create send email api
+  * [X] register account at email services
+  * [ ] config in the env & config
+  * [ ] make functions to read account list and send email accordingly
 * [ ] create send result-list if possible
 * [ ] things I'm not done
   * [ ] none yet

@@ -4,12 +4,18 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var dotenv = require('dotenv');
+var cors = require('cors');
+
+dotenv.load({ path: '.env' });
 
 // var index = require('./routes/index');
 // var users = require('./routes/users');
 var emailRouter = require('./routes/email');
 
 var app = express();
+
+app.use(cors());
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

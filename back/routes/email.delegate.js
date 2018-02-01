@@ -3,10 +3,9 @@ var EmailDelegate = function ({emailService}) {
   this.sendEmail = sendEmail;
 }
 
-function sendEmail() {
-  return this.emailService.sendEmail()
-    .then(data => {
-      console.log('hey im here');
+function sendEmail(email) {
+  return this.emailService.sendEmail(email)
+    .then(data => {      
       return Promise.resolve();
     })
     .catch(e => {

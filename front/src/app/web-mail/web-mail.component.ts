@@ -24,6 +24,7 @@ export class WebMailComponent implements OnInit {
 
   createForm() {
     this.emailForm = this.fb.group({
+      sender: [''],
       recipients: [''],
       cc: [''],
       bcc: [''],
@@ -46,6 +47,7 @@ export class WebMailComponent implements OnInit {
     const formModel = this.emailForm.value;
 
     const saveEmail: Email = {
+      sender: formModel.sender,
       recipients: formModel.recipients,
       cc: formModel.cc,
       bcc: formModel.bcc,
