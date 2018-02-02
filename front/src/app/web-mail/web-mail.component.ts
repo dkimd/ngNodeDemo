@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { EmailService } from '../service/email.service';
 import { Email } from '../service/email';
+import { multipleEmailValidator } from '../shared/multiple-email.directive';
 
 @Component({
   selector: 'app-web-mail',
@@ -12,6 +13,7 @@ export class WebMailComponent implements OnInit {
   emailForm: FormGroup;
   email: Email;
   msg: string;
+  regex = /^([\w+-.%]+@[\w-.]+\.[A-Za-z]{2,4},?){1,6}$/;
 
   constructor(
     private fb: FormBuilder,
@@ -28,6 +30,9 @@ export class WebMailComponent implements OnInit {
       recipients: [''],
       cc: [''],
       bcc: [''],
+      // recipients: ['', [Validators.required, multipleEmailValidator(this.regex)]],
+      // cc: ['', [multipleEmailValidator(this.regex)]],
+      // bcc: ['', [multipleEmailValidator(this.regex)]],
       subject: [''],
       contents: ['']
     });
@@ -39,7 +44,7 @@ export class WebMailComponent implements OnInit {
       .save(this.email)
       .subscribe(
         result => (this.msg = result),
-        error => (this.msg =<any>error)
+        // error => (this.msg =<any>error)
       );
   }
 

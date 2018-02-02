@@ -6,14 +6,12 @@ var EmailDelegate = function ({emailService}) {
 function sendEmail(email) {
   return this.emailService.sendEmail(email)
     .then(data => {      
-      return Promise.resolve();
+      return data;
     })
     .catch(e => {
-      return Promise.resolve();
+      console.log(e);
     })
       ;
 }
-
-
 
 module.exports = EmailDelegate;

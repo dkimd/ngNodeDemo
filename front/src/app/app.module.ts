@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { WebMailComponent } from './web-mail/web-mail.component';
 import { AboutComponent } from './about/about.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { ForbiddenValidatorDirective } from './shared/multiple-email.directive';
 
 
 @NgModule({
@@ -17,7 +18,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     AppComponent,
     WebMailComponent,
     AboutComponent,
-    NavbarComponent
+    NavbarComponent,
+    ForbiddenValidatorDirective
   ],
   imports: [
     BrowserModule,

@@ -23,6 +23,7 @@ function setMailHeader() {
       'Content-Type': 'application/x-www-form-urlencoded'    
     }    
   };
+  console.log(options);
   return options;
 }
 

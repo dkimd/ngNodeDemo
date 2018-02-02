@@ -20,7 +20,7 @@
   * [ ] multiple receipients, CCs, BCCs, Text Email contents
   * [ ] result message
   * [ ] input validation
-  * [ ] failover - email service
+  * [X] failover - email service
   * [ ] ask user when leaving the email page if email isn't sent
 * [ ] make two versions of front angular
     * [ ] one with simple component based
@@ -39,15 +39,22 @@
   * [ ] pop-up message for email que / result
   * [ ] disable send button after clicking
   * [ ] prevent page leave in the middle of writing email
+  * [ ] input validation -> used RegExp validator but consider observable and check function
+    * [ ] input validation for blank subject and contents. ask!
+    * [ ] when validator error, show messages too
+  * [ ] more test cases
 
 * [X] create express backend project server
 * [ ] create send email api
   * [X] register account at email services
-  * [ ] config in the env & config
-  * [ ] make functions to read account list and send email accordingly
+  * [X] config in the env & config
+  * [X] make functions to read account list and send email accordingly
 * [ ] create send result-list if possible
 * [ ] things I'm not done
-  * [ ] none yet
+  * [ ] error messages
+  * [ ] input validation
+  * [ ] more test cases
+  * [ ] CC/BCC minimized but expand when clicked
 
 ## TODO
 

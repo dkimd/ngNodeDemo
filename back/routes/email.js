@@ -15,9 +15,10 @@ router.get('/', function(req, res, next) {
 router.post('/', _sendEmail);
 
 function _sendEmail(req, res) {
-  console.log('route located');
+  
   delegate.sendEmail(req.body)
     .then(response => {
+      // console.log(response);
       res.json(response);
     })
 }

@@ -3,11 +3,12 @@
 ## V 0.3.0
 
 * Backend finished
-  * API email POST
+  * API : send email POST
+  * failover to next service.
 
 ## V 0.2.0
 
 * Front Page fininshed
   * email form
   * about page for routing demo purpose
-  * angular material css applied
+  * angular material/css applied
