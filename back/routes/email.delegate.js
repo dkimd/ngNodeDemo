@@ -1,3 +1,5 @@
+var ResMessage = require('../util/ResMessage');
+
 var EmailDelegate = function ({emailService}) {
   this.emailService = emailService;
   this.sendEmail = sendEmail;
@@ -6,10 +8,10 @@ var EmailDelegate = function ({emailService}) {
 function sendEmail(email) {
   return this.emailService.sendEmail(email)
     .then(data => {      
-      return data;
+      return Promise.resolve(new ResMessage(true, null, data));
     })
     .catch(e => {
-      console.log(e);
+      return Promise.resolve(new ResMessage(false, e.message, null))
     })
       ;
 }

@@ -1,9 +1,11 @@
 function setMailContent(email) {
+  
+  var cc = split(email.cc);
+  var bcc = split(email.bcc);
+
   const mailBody = {
     personalizations: [{
-        to: [{
-            email: email.recipients
-        }],
+        to: split(email.recipients),
         subject: email.subject
     }],
     from: {
@@ -14,6 +16,15 @@ function setMailContent(email) {
         value: email.contents
     }]
   };
+
+  if (cc.length) {    
+    mailBody.personalizations[0].cc = cc;
+  }
+
+  if (bcc.length) {    
+    mailBody.personalizations[0].bcc = bcc;
+  }  
+
   return JSON.stringify(mailBody);
 }
 
@@ -29,6 +40,12 @@ function setMailHeader() {
     }    
   };
   return options;
+}
+
+function split(list) {
+  var arr = [];  
+  list.split(',').forEach(e=> { if (e)  arr.push({"email":e})}); 
+  return arr;
 }
 
 var setMail = function (email) {  

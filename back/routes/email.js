@@ -15,12 +15,15 @@ router.get('/', function(req, res, next) {
 router.post('/', _sendEmail);
 
 function _sendEmail(req, res) {
-  
+  /* 
+    every response resolves 
+    errors taken care of at the level below
+    and returns error messages only
+  */
   delegate.sendEmail(req.body)
-    .then(response => {
-      // console.log(response);
+    .then(response => {  
       res.json(response);
-    })
+    })    
 }
 
 module.exports = router;

@@ -40,7 +40,7 @@ export class EmailService {
   private extractData(res: Response) {
     console.log('here01');
     const body = res.json();
-    return body.payload || [];
+    return body || [];
   }
 
 }

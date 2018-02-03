@@ -35,14 +35,15 @@
 * [X] make a interface for email form
 * [X] make service that interacts with backend
 * [ ] things I'm not done
-  * [ ] clear button not doing anything yet
+  * [X] clear button not doing anything yet
   * [ ] pop-up message for email que / result
-  * [ ] disable send button after clicking
-  * [ ] prevent page leave in the middle of writing email
+  * [X] prevent repetitive submit
+  * [X] prevent page leave in the middle of writing email
   * [ ] input validation -> used RegExp validator but consider observable and check function
-    * [ ] input validation for blank subject and contents. ask!
+    * [X] input validation for blank subject and contents. -> sendGrid doesn't allow blank subject, thus it's a required field, user doesn't have choice.
     * [ ] when validator error, show messages too
   * [ ] more test cases
+* [ ] code linting
 
 * [X] create express backend project server
 * [ ] create send email api
@@ -57,6 +58,17 @@
   * [ ] CC/BCC minimized but expand when clicked
 
 ## TODO
+
+* webhooks api : to have accurate report on actual delivery and bouncew analysis
+* sent mail list & resend & forward to new recipients
+* periodic email service health check could help provide more responsive service.
+* if it was a real working environment.
+  * should have asked about page design mock-up
+  * should have asked for code style guide lines.
+
+## Limitations
+
+* MailGun only lets free users send mails to 5 registered & verified email address for test purpose. [Mailgun Doc](https://documentation.mailgun.com/en/latest/user_manual.html#verifying-your-domain). Thus, Unable to test multiple users other than registered.
 
 ## Objective
 

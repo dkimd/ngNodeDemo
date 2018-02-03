@@ -1,4 +1,5 @@
 // statics
+import 'rxjs/add/observable/merge';
 
 // operators
 

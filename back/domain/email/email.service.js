@@ -11,11 +11,16 @@ function sendEmail(email) {
   const makeRequest = async () => {
 
     var result;
+        
     try {
-      result = await request(sgMail.setHeader(), sgMail.setMail(email));
+      // due to free account limitation, this will always fail
+      // when multiple recipients and goes to next mail sender
+      
+      result = await request(mgMail.setHeader(), mgMail.setMail(email));      
     } catch (e) {
-      result = await request(mgMail.setHeader(), mgMail.setMail(email));
+      result = await request(sgMail.setHeader(), sgMail.setMail(email));      
     }
+
     return result;
   }
 
@@ -26,18 +31,23 @@ function sendEmail(email) {
 function request(params, postData) {
   return new Promise(function(resolve, reject) {
       var req = https.request(params, function(res) {
+          console.log(res.statusCode + " : " + res.statusMessage + " @" + params.hostname);
+          var result = {
+            "statusCode": res.statusCode,
+            "provider": params.hostname
+          }
           // reject on bad status          
           if (res.statusCode < 200 || res.statusCode >= 300) {
-              return reject(new Error('statusCode=' + res.statusCode));
+              return reject(result);
           } else {
-            resolve(res)
+            resolve(result)
           }
       });
       // reject on request error
       req.on('error', function(err) {          
           reject(err);
       });
-      if (postData) {
+      if (postData) {          
           req.write(postData);
       }      
       req.end();
