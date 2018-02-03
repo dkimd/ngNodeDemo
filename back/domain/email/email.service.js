@@ -14,7 +14,7 @@ function sendEmail(email) {
         
     try {
       // due to free account limitation, this will always fail
-      // when multiple recipients and goes to next mail sender
+      // when multiple recipients and will go to next mail sender
       
       result = await request(mgMail.setHeader(), mgMail.setMail(email));      
     } catch (e) {
@@ -31,7 +31,7 @@ function sendEmail(email) {
 function request(params, postData) {
   return new Promise(function(resolve, reject) {
       var req = https.request(params, function(res) {
-          console.log(res.statusCode + " : " + res.statusMessage + " @" + params.hostname);
+          // console.log(res.statusCode + " : " + res.statusMessage + " @" + params.hostname);
           var result = {
             "statusCode": res.statusCode,
             "provider": params.hostname

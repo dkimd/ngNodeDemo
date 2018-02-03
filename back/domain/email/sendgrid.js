@@ -1,11 +1,11 @@
 function setMailContent(email) {
   
-  var cc = split(email.cc);
-  var bcc = split(email.bcc);
+  var cc = splitList(email.cc);
+  var bcc = splitList(email.bcc);
 
   const mailBody = {
     personalizations: [{
-        to: split(email.recipients),
+        to: splitList(email.recipients),
         subject: email.subject
     }],
     from: {
@@ -42,7 +42,7 @@ function setMailHeader() {
   return options;
 }
 
-function split(list) {
+function splitList(list) {
   var arr = [];  
   list.split(',').forEach(e=> { if (e)  arr.push({"email":e})}); 
   return arr;

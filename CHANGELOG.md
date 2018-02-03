@@ -2,9 +2,18 @@
 
 ## V 0.3.0
 
-* Backend finished
+* frontend
+  * notify toast added
+  * responsive css
+  * input validation / error messages / multiple email
+  * email subject / contents compulsory
+  * user confirm when page leave
+
+* Backend
   * API : send email POST
   * failover to next service.
+  * test cases added
+  * separate config function for each mail service
 
 ## V 0.2.0
 

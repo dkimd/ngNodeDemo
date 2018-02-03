@@ -18,7 +18,7 @@ function _sendEmail(req, res) {
   /* 
     every response resolves 
     errors taken care of at the level below
-    and returns error messages only
+    and in error cases, returns messages only.
   */
   delegate.sendEmail(req.body)
     .then(response => {  

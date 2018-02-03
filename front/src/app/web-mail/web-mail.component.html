@@ -6,35 +6,42 @@
     <form [formGroup]="emailForm" (ngSubmit)="save()">
       <div>
         <mat-form-field>
-          <input type="email" matInput placeholder="From" formControlName="sender" email>
+          <input type="email" matInput placeholder="From" formControlName="sender" email>          
+          <mat-error>Please enter valid email.</mat-error>
         </mat-form-field>
+        
       </div>
       <div>
         <mat-form-field>
           <input matInput placeholder="To" formControlName="recipients">
+          <mat-error>Please enter valid email and comma separated for multiple entry.</mat-error>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field>
           <input matInput placeholder="Cc" formControlName="cc">
+          <mat-error>Please enter valid email and comma separated for multiple entry.</mat-error>
         </mat-form-field>
         <mat-form-field>
           <input matInput placeholder="Bcc" formControlName="bcc">
+          <mat-error>Please enter valid email and comma separated for multiple entry.</mat-error>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field>
           <input matInput placeholder="Subject" formControlName="subject">
+          <mat-error>Please enter subject. It is required.</mat-error>
         </mat-form-field>
       </div>
       <div>
         <mat-form-field>
           <textarea matInput placeholder="Please Write" matTextareaAutosize matAutosizeMinRows="2" matAutosizeMaxRows="30" formControlName="contents"></textarea>
+          <mat-error>Please enter content. It is required.</mat-error>
 
         </mat-form-field>
       </div>
       <div>
-        <button type="submit" color="primary" mat-raised-button [disabled]="isDisabled">Send</button>
+        <button type="submit" color="primary" mat-raised-button>Send</button>
         <button type="button" mat-raised-button (click)="clear()">Clear</button>
       </div>
     </form>

@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { EmailService } from '../service/email.service';
@@ -6,10 +6,21 @@ import { Email } from '../service/email';
 import { multipleEmailValidator } from '../shared/multiple-email.directive';
 import { DialogService } from '../service/dialog.service';
 
+import { Directionality } from '@angular/cdk/bidi';
+import {
+  MatSnackBar,
+  MatSnackBarConfig,
+  MatSnackBarHorizontalPosition,
+  MatSnackBarVerticalPosition
+} from '@angular/material';
+
+// import {ErrorStateMatcher} from '@angular/material';
+
 @Component({
   selector: 'app-web-mail',
   templateUrl: './web-mail.component.html',
-  styleUrls: ['./web-mail.component.scss']
+  styleUrls: ['./web-mail.component.scss'],
+  encapsulation: ViewEncapsulation.None,
 })
 export class WebMailComponent implements OnInit, AfterViewInit {
   emailForm: FormGroup;
@@ -19,10 +30,20 @@ export class WebMailComponent implements OnInit, AfterViewInit {
   isChanged = false;
   isSubmitted = false;
 
+  actionButtonLabel = 'Retry';
+  action = false;
+  setAutoHide = true;
+  autoHide = 10000;
+  addExtraClass = false;
+  horizontalPosition: MatSnackBarHorizontalPosition = 'center';
+  verticalPosition: MatSnackBarVerticalPosition = 'bottom';
+
   constructor(
     private fb: FormBuilder,
     private emailService: EmailService,
-    public dialogService: DialogService
+    public dialogService: DialogService,
+    public snackBar: MatSnackBar,
+    private dir: Directionality
   ) {
     this.createForm();
   }
@@ -30,9 +51,7 @@ export class WebMailComponent implements OnInit, AfterViewInit {
   ngOnInit() {}
 
   ngAfterViewInit() {
-    Observable.merge(
-      this.emailForm.valueChanges
-    ).subscribe(d => {
+    Observable.merge(this.emailForm.valueChanges).subscribe(d => {
       this.isChanged = true;
     });
   }
@@ -57,14 +76,19 @@ export class WebMailComponent implements OnInit, AfterViewInit {
     }
     this.isSubmitted = true;
     this.email = this.copyFormtoSave();
+    this.openMessage('EMail Sending');
     this.emailService.save(this.email).subscribe(
       result => {
         this.isChanged = false;
         this.isSubmitted = false;
         this.msg = result;
-        console.log(this.msg);
+
+        if (result.success) {
+          this.openMessage('Email Qued to Providers');
+        } else {
+          this.openMessage('Email Que Failed. Please Try Again!');
+        }
       }
-      // error => (this.msg =<any>error)
     );
   }
 
@@ -93,5 +117,19 @@ export class WebMailComponent implements OnInit, AfterViewInit {
       return true;
     }
     return this.dialogService.confirm('Discard changes?');
+  }
+
+  openMessage(message) {
+    let config = new MatSnackBarConfig();
+    config.verticalPosition = this.verticalPosition;
+    config.horizontalPosition = this.horizontalPosition;
+    config.duration = this.setAutoHide ? this.autoHide : 0;
+    config.direction = this.dir.value;
+
+    this.snackBar.open(
+      message,
+      this.action ? this.actionButtonLabel : undefined,
+      config
+    );
   }
 }
