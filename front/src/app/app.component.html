@@ -1,0 +1,17 @@
+<div fxLayout="column" fxFlexFill>
+  <app-navbar (toggleSidenav)="sidenav.toggle()"></app-navbar>
+  <mat-sidenav-container fxFlex="grow">
+
+    <mat-sidenav [ngClass]="{'collapsed': !isSideBySide }" #sidenav [opened]="isOpened()" [mode]="isOpened()?'side':'over'" class="main-sidenav">
+      <mat-nav-list>
+        <a mat-list-item routerLink="/email">
+          <mat-icon>email</mat-icon>Mail</a>
+        <a mat-list-item routerLink="/about">
+          <mat-icon>info</mat-icon>About</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <router-outlet></router-outlet>
+
+  </mat-sidenav-container>
+</div>
