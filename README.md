@@ -1,18 +1,19 @@
-# The Software Engineer challenge v2.2 - email
+# Email Send Service using Angular / Node Express
 
 <!-- TOC -->
 
-* [The Software Engineer challenge v2.2 - email](#the-software-engineer-challenge-v22---email)
-  * [Preview](#preview)
-  * [Running The Service](#running-the-service)
-    * [Development Mode](#development-mode)
-    * [Production Mode](#production-mode)
-  * [Features](#features)
-  * [TODO](#todo)
-  * [Limitations](#limitations)
-  * [change log](#change-log)
-    * [V 0.3.0](#v-030)
-    * [V 0.2.0](#v-020)
+* [Preview](#preview)
+* [Running The Service](#running-the-service)
+  * [Development Mode](#development-mode)
+  * [Production Mode](#production-mode)
+* [Features](#features)
+* [Framework/Components/Libraries used](#frameworkcomponentslibraries-used)
+* [TODO](#todo)
+* [Limitations](#limitations)
+* [dependencies](#dependencies)
+* [change log](#change-log)
+  * [V 0.3.0](#v-030)
+  * [V 0.2.0](#v-020)
 
 <!-- /TOC -->
 
@@ -77,7 +78,13 @@ or if you've installed pm2
 * sends email on the app.
 * Single Page App using Angular
 * PC / Mobile friendly Responsive design using google material.
-* use sendGrid and Mailgun for mail sending. Failover when one service returns error
+* sendGrid and Mailgun for mail sending. Failover when one service returns error
+
+## Framework/Components/Libraries used
+
+* Angular 5.2.0
+* Material2 5.2.0
+* Express 4.15.5
 
 ## TODO
 
@@ -85,8 +92,6 @@ or if you've installed pm2
 * webhooks api : to have accurate report on actual delivery and bounce analysis
 * periodic email service health check could help provide more responsive service.
 * Dockerize for easy deploy
-* Page design mock-up
-* follow siteMinder's code style guide.
 
 ## Limitations
 

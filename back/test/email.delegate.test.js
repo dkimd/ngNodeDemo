@@ -2,7 +2,7 @@ const assert = require('assert');
 const Delegate = require('../routes/email.delegate');
 
 describe('email.delegate testing resolve/reject behavior ', () => {
-  var mockService = {
+  const mockService = {
     sendEmail: function(flag) {
       if (flag) {
         return Promise.resolve();
@@ -13,7 +13,7 @@ describe('email.delegate testing resolve/reject behavior ', () => {
     }    
   };
 
-  var delegate = new Delegate({emailService: mockService});
+  const delegate = new Delegate({emailService: mockService});
 
   it('should return success', () => {
     return delegate.sendEmail(1)

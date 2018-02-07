@@ -24,7 +24,6 @@ export class EmailService {
   }
 
   private handleError(error: Response | any) {
-    console.log(error);
     let errMsg: string;
     if (error instanceof Response) {
       const body = error.json() || '';
@@ -38,7 +37,6 @@ export class EmailService {
   }
 
   private extractData(res: Response) {
-    console.log('here01');
     const body = res.json();
     return body || [];
   }

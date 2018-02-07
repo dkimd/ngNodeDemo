@@ -1,8 +1,8 @@
-var https = require('https');
-var sgMail = require('./sendgrid');
-var mgMail = require('./mailgun');
+const https = require('https');
+const sgMail = require('./sendgrid');
+const mgMail = require('./mailgun');
 
-var emailService = {
+const emailService = {
   sendEmail: sendEmail
 };
 
@@ -10,7 +10,7 @@ function sendEmail(email) {
 
   const makeRequest = async () => {
 
-    var result;
+    let result;
         
     try {
       // due to free account limitation, this will always fail
@@ -30,9 +30,9 @@ function sendEmail(email) {
 
 function request(params, postData) {
   return new Promise(function(resolve, reject) {
-      var req = https.request(params, function(res) {
+      const req = https.request(params, function(res) {
           // console.log(res.statusCode + " : " + res.statusMessage + " @" + params.hostname);
-          var result = {
+          let result = {
             "statusCode": res.statusCode,
             "provider": params.hostname
           }

@@ -1,7 +1,7 @@
 const assert = require('assert');
 const service = require('../domain/email/email.service');
 
-/*
+
 describe('email.service main test', function() {
   this.timeout(50000);
 
@@ -132,7 +132,7 @@ describe('email.service sendGrid test', function() {
     });
   });
 });
-*/
+
 describe('email.service Mail GUN test', function() {
   let env;
   let email = {

@@ -1,6 +1,6 @@
-var ResMessage = require('../util/ResMessage');
+const ResMessage = require('../util/ResMessage');
 
-var EmailDelegate = function ({emailService}) {
+const EmailDelegate = function ({emailService}) {
   this.emailService = emailService;
   this.sendEmail = sendEmail;
 }
