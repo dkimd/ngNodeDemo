@@ -1,4 +1,4 @@
-var ResMessage = function (success, error, data) {
+const ResMessage = function (success, error, data) {
   this.success = success;
   this.error = success ? null : error || 'please consult staff.';
   this.data = data;

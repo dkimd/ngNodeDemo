@@ -1,10 +1,10 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
-var EmailDelegate = require('./email.delegate');
-var emailService = require('../domain/email/email.service');
+const EmailDelegate = require('./email.delegate');
+const emailService = require('../domain/email/email.service');
 
-var delegate = new EmailDelegate({emailService});
+const delegate = new EmailDelegate({emailService});
 
 
 /* GET users listing. */

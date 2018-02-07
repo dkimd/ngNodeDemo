@@ -35,11 +35,11 @@ function setMailHeader() {
   return options;
 }
 
-var setMail = function (email) {  
+const setMail = function (email) {  
   return setMailContent(email)
 }
 
-var setHeader = function () {  
+const setHeader = function () {  
   return setMailHeader()
 }
 

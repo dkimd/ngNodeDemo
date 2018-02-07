@@ -1,5 +1,11 @@
-import { Component, OnInit, AfterViewInit, ViewEncapsulation } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import {
+  Component,
+  OnInit,
+  AfterViewInit,
+  ViewEncapsulation,
+  ViewChild
+} from '@angular/core';
+import { FormGroup, FormBuilder, Validators, FormGroupDirective } from '@angular/forms';
 import { Observable } from 'rxjs/Observable';
 import { EmailService } from '../service/email.service';
 import { Email } from '../service/email';
@@ -20,9 +26,11 @@ import {
   selector: 'app-web-mail',
   templateUrl: './web-mail.component.html',
   styleUrls: ['./web-mail.component.scss'],
-  encapsulation: ViewEncapsulation.None,
+  encapsulation: ViewEncapsulation.None
 })
 export class WebMailComponent implements OnInit, AfterViewInit {
+  @ViewChild(FormGroupDirective) formGroupDirective: FormGroupDirective;
+
   emailForm: FormGroup;
   email: Email;
   msg: string;
@@ -71,25 +79,29 @@ export class WebMailComponent implements OnInit, AfterViewInit {
   }
 
   save() {
-    if (!this.emailForm.valid || this.isSubmitted) {
+    if (!this.emailForm.valid) {
+      this.openMessage('Please Enter Valid Values.');
+      return true;
+    }
+    if (this.isSubmitted) {
+      this.openMessage('Already Submitted.');
       return true;
     }
     this.isSubmitted = true;
     this.email = this.copyFormtoSave();
     this.openMessage('EMail Sending');
-    this.emailService.save(this.email).subscribe(
-      result => {
-        this.isChanged = false;
-        this.isSubmitted = false;
-        this.msg = result;
 
-        if (result.success) {
-          this.openMessage('Email Qued to Providers');
-        } else {
-          this.openMessage('Email Que Failed. Please Try Again!');
-        }
+    this.emailService.save(this.email).subscribe(result => {
+      this.isChanged = false;
+      this.isSubmitted = false;
+      this.msg = result;
+
+      if (result.success) {
+        this.openMessage('Email Sent to Providers');
+      } else {
+        this.openMessage('Email Sending Failed. Please Try Again!');
       }
-    );
+    });
   }
 
   copyFormtoSave(): Email {
@@ -105,11 +117,6 @@ export class WebMailComponent implements OnInit, AfterViewInit {
     };
 
     return saveEmail;
-  }
-
-  clear() {
-    this.emailForm.reset();
-    this.isChanged = false;
   }
 
   canDeactivate(): Observable<boolean> | boolean {
@@ -131,5 +138,17 @@ export class WebMailComponent implements OnInit, AfterViewInit {
       this.action ? this.actionButtonLabel : undefined,
       config
     );
+  }
+
+  clear() {
+    //  this.emailForm.reset({
+    //    sender: '', recipients: '', cc: '', bcc: '', subject: '', contents: ''
+    //  });
+    // this.emailForm.updateValueAndValidity();
+    // this.emailForm.markAsPristine();
+    // this.emailForm.markAsUntouched();
+    this.formGroupDirective.resetForm({
+      sender: '', recipients: '', cc: '', bcc: '', subject: '', contents: ''
+    });
   }
 }
